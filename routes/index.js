@@ -63,7 +63,11 @@ router.patch("/heart", (req, res) => {
   const heart = posts[idx].heart;
   posts[idx].heart = !heart;
 
-  res.json(posts[idx].heart ? "좋아요!" : "좋아요 해제");
+  res.json(
+    posts[idx].heart
+      ? { text: "좋아요!", heart: posts[idx].heart }
+      : { text: "좋아요 해제", heart: posts[idx].heart }
+  );
 });
 
 module.exports = router;
